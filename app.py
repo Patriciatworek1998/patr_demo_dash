@@ -35,6 +35,8 @@ fig_employee = px.bar(order,
 fig_employee.update_traces(texttemplate='%{text:.2s}', textposition='outside')
 fig_employee.update_layout(uniformtext_minsize=8, uniformtext_mode='hide', xaxis_tickangle=45)
 
+
+
 # ***************************************
 # Activate the app
 # ***************************************
@@ -42,6 +44,9 @@ fig_employee.update_layout(uniformtext_minsize=8, uniformtext_mode='hide', xaxis
 
 dash_app = dash.Dash(__name__)
 app = dash_app.server
+
+#dash_app = dash.Dash(__name__)
+#app = dash_app.server
 
 # ***************************************
 # Layout
@@ -82,32 +87,35 @@ dash_app.layout = html.Div(
 # ***************************************
 # Output er diagrammet
 # Input er DropDown
-@dash_app.callback(Output('sales_employee', 'figure'),
-              [Input('drop_month', 'value')],
-              [Input('drop_year', 'value')])
 
-def update_graph(drop_month, drop_year):
-    if drop_year:
-        if drop_month:
-            # Data i både drop_month og drop_year
-            order_fig1 = order.loc[(order['orderyear'] == drop_year) & (order['ordermonth'] == drop_month)]
-        else:
-            # Data i drop_year. men ikke drop_month
-            order_fig1 = order.loc[order['orderyear'] == drop_year]
-    else:
-        if drop_month:
-            # Data i drop_month, men ikke drop_year
-            order_fig1 = order.loc[order['ordermonth'] == drop_month]
-        else:
-            # Ingen data - ikke noget valgt
-            order_fig1 = order
+
+
+#@dash_app.callback(Output('sales_employee', 'figure'),
+              #[Input('drop_month', 'value')],
+              #[Input('drop_year', 'value')])
+
+#def update_graph(drop_month, drop_year):
+    #if drop_year:
+        #if drop_month:
+            #Data i både drop_month og drop_year
+           # order_fig1 = order.loc[(order['orderyear'] == drop_year) & (order['ordermonth'] == drop_month)]
+       # else:
+            #Data i drop_year. men ikke drop_month
+            #order_fig1 = order.loc[order['orderyear'] == drop_year]
+    #else:
+        #if drop_month:
+            #Data i drop_month, men ikke drop_year
+            #order_fig1 = order.loc[order['ordermonth'] == drop_month]
+        #else:
+            #Ingen data - ikke noget valgt
+            #order_fig1 = order
         
-    return {'data':[go.Bar(
-        x = order_fig1['productname'],
-        y = order_fig1['total']
-            )
-        ]
-    }
+    #return {'data':[go.Bar(
+        #x = order_fig1['productname'],
+        #y = order_fig1['total']
+            #)
+        #]
+    #}
 
 # ***************************************
 # Run the app
