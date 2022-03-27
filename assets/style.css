@@ -148,7 +148,7 @@ Taken from https://codepen.io/chriddyp/pen/bWLwgP.css
    /* currently ems cause chrome bug misinterpreting rems on body element */
     line-height: 1.6;
     font-weight: 400;
-    color: rgb(255, 255, 255);
+    color: rgb(54, 172, 66);
   }
   
   /* Typography –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -203,7 +203,7 @@ Taken from https://codepen.io/chriddyp/pen/bWLwgP.css
   }
   /* Blockquotes –––––––––––––––––––––––––––––––––––––––––––––––––– */
   blockquote {
-    border-left: 4px lightgrey solid;
+    border-left: 4px rgb(182, 63, 63) solid;
     padding-left: 1rem;
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -216,11 +216,11 @@ Taken from https://codepen.io/chriddyp/pen/bWLwgP.css
     cursor: pointer;
   }
   a:hover {
-    color: #0FA0CE;
+    color: #e80ace;
   }
   /* Buttons –––––––––––––––––––––––––––––––––––––––––––––––––– */
   .rc-slider-track{
-    background-color: #007eff
+    background-color: #15ff00
   }
   
   .rc-slider-rail{
@@ -245,7 +245,7 @@ Taken from https://codepen.io/chriddyp/pen/bWLwgP.css
     display: inline-block;
     height: 38px;
     padding: 0 30px;
-    color: #555;
+    color: rgb(194, 3, 3);
     text-align: center;
     font-size: 11px;
     font-weight: 600;
@@ -345,7 +345,7 @@ Taken from https://codepen.io/chriddyp/pen/bWLwgP.css
   th, td {
     padding: 12px 15px;
     text-align: left;
-    border-bottom: 1px solid #E1E1E1;
+    border-bottom: 1px solid #040000;
   }
   th:first-child, td:first-child {
     padding-left: 0;
@@ -419,8 +419,8 @@ Taken from https://codepen.io/chriddyp/pen/bWLwgP.css
   }
   
   body {
-    background-color: #ffffff;
-    color: #ffffff;
+    background-color: #fffdfd;
+    color: #fffefe;
     height: 100%;
     margin: 0;
     padding: 0;

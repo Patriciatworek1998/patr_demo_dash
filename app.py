@@ -30,15 +30,19 @@ df_month = datamodel.get_month()
 # ***************************************
 fig_employee = px.bar(order, 
     x='emp_name', y='total', 
-    color='type', text='total', title='Sales by Employee',
+    color='type', text='total', title='SALES BY EMPLOYEE',
+    color_discrete_sequence=["darkred", "green"],
+    template='plotly_dark',
     hover_data=[],
-    labels={'total':'Total sales', 'emp_name':'Employee', 'type':'Product Type'})
+    labels={'total':'Total sales', 'emp_name':'Employee', 'type':'Product Type', 'font': {'color': 'white'}})
 fig_employee.update_traces(texttemplate='%{text:.2s}', textposition='outside')
 fig_employee.update_layout(uniformtext_minsize=8, uniformtext_mode='hide', xaxis_tickangle=45)
 
 fig_products = px.bar(order, 
     x='productname', y='total', 
-    color='type', text='total', title='Sales by Products',
+    color='type', text='total', title='SALES BY PRODUCTS',
+    color_discrete_sequence=["darkred", "green"],
+    template='plotly_dark',
     hover_data=[],
     labels={'total':'Total sales', 'productname':'Product', 'type':'Product Type'})
 fig_products.update_traces(texttemplate='%{text:.2s}', textposition='outside')
@@ -52,6 +56,7 @@ fig_products.update_layout(uniformtext_minsize=8, uniformtext_mode='hide', xaxis
 dash_app = dash.Dash(__name__)
 app = dash_app.server
 
+
 #dash_app = dash.Dash(__name__)
 #app = dash_app.server
 
@@ -60,41 +65,33 @@ app = dash_app.server
 # ***************************************
 # Layout
 # ***************************************
-dash_app.layout = html.Div(
+dash_app.layout = html.Div(style={'backgroundColor':'lightgrey'},
     children=[
         html.Div(className='row',
                 children=[
                     #html.Div(className='four columns div-user-controls',
                             #children=[
-                                #html.H2('Sales dashboard'),
-                                #html.P('Select filters from dropdown'),
-
-                    #html.Div(children="Month", className="menu-title"),
-                            #dcc.Dropdown(
-                                #id='drop_month',
-                                #options=[{'label':selectmonth, 'value':selectmonth} for selectmonth in df_month['monthnames']],
-                            #),
-                    #html.Div(children="Year", className="menu-title"),
-                            #dcc.Dropdown(
-                                #id='drop_year',
-                                #options=[{'label':selectyear, 'value':selectyear} for selectyear in df_year]
-                            #),
-                            #]
-                    #),
-                    html.Div(className='eight columns div-for-charts bg-grey',
+                                #html.H2('Sales dashboard',style={'color':'blue','textAlign':'center'}),
+                                #html.P('Employee and Product', style={'textAlign':'center','color':'blue'}),
+                    html.Div(#className='eight columns div-for-charts bg-grey',
                             children=[
-                                dcc.Graph(id="sales_employee", figure=fig_employee)
-                            ]
-                    ),
-                    html.Div(className='eight columns div-for-charts bg-grey',
-                            children=[
-                                dcc.Graph(id="sales_product", figure=fig_products)
+                                dcc.Graph(id="sales_employee", figure=fig_employee),
+                                dcc.Graph(id="sales_product", figure=fig_products)])
                             ]
                     ),
                 ]
-            )
-        ]
-)
+        )
+    #]
+#)
+                    
+                
+                
+        
+    
+
+    
+                
+    
 
 
 # ***************************************
@@ -117,7 +114,7 @@ dash_app.layout = html.Div(
         #else:
             #Data i drop_year. men ikke drop_month
             #order_fig1 = order.loc[order['orderyear'] == drop_year]
-   # else:
+    #else:
         #if drop_month:
             #Data i drop_month, men ikke drop_year
             #order_fig1 = order.loc[order['ordermonth'] == drop_month]
@@ -130,7 +127,7 @@ dash_app.layout = html.Div(
         #y = order_fig1['total']
             #)
         #]
-    #}
+    #c}
 
 # ***************************************
 # Run the app
